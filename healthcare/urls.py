@@ -23,9 +23,11 @@ from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', user_views.dashboard, name='dashboard'),
+    path('menu/', user_views.dashboard, name='dashboard'),
+    path('newpatient/', user_views.newPatient, name='newp'),
     #path('', include('user.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/',auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
+    path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
 
 ]
