@@ -1,0 +1,17 @@
+{% extends "user/base.html" %}
+{% block content %}
+{% for detail in details %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+        <h1 class="mr-2" href="#">{{ detail.doctor }}</h1>
+        {% for hist in detail.history.all %}
+            <h5>{{hist.medicine}}</h5>
+        {% endfor %}
+        </div>
+        
+    </div>
+    </article>
+    {% endfor %}
+
+{% endblock content %}

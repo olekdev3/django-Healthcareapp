@@ -1,28 +1,53 @@
 {% extends "user/base.html" %}
 {% block content %}
     <div class="container">
-        <div class="row" style="margin-top:20px">
+        <div class="row" style="margin-top:80px">
             
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:220px; margin:10px;">
+                <img class="card-img-top" src="https://image.flaticon.com/icons/svg/119/119071.svg" alt="Card image" style="width:180; padding: 10px;">
+                <div class="card-body">
+                  <h4 class="card-title">Doctor</h4>
+                  <!-- <p class="card-text">Description</p> -->
+                  <a href="{% url 'doctors' %}" class="btn btn-primary">Show</a>
+                </div>
+              </div>
+
+              <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:220px; margin: 10px;">
+                <img class="card-img-top" src="https://image.flaticon.com/icons/svg/1043/1043169.svg" alt="Card image" style="width:180; padding: 10px;">
+                <div class="card-body">
+                  <h4 class="card-title">Patients</h4>
+                  <!-- <p class="card-text">Description</p> -->
+                  <a href="{% url 'patients' %}" class="btn btn-primary">Show</a>
+                </div>
+              </div>
+
+              <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:220px; margin:10px;">
+                <img class="card-img-top" src="https://image.flaticon.com/icons/svg/119/119051.svg" alt="Card image" style="width:180; padding: 10px;">
+                <div class="card-body">
+                  <h4 class="card-title">History</h4>
+                  <!-- <p class="card-text">Description</p> -->
+                  <a href="{% url 'history' %}" class="btn btn-primary">Show</a>
+                </div>
+              </div>
+            
+            <!-- <a href="#" class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin:10px; background: #000000; ">
+                <img src="https://image.flaticon.com/icons/svg/119/119058.svg" class="img-fluid" alt="Responsive image">
+            </a>
             <a class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin:10px; background: #000000; ">
                 <img src="https://image.flaticon.com/icons/svg/119/119058.svg" class="img-fluid" alt="Responsive image">
             </a>
-            
-            <a href="#" class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin:10px; background: #000000; ">
-                <img src="https://image.flaticon.com/icons/svg/119/119058.svg" class="img-fluid" alt="Responsive image">
-            </a>
-            <a class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin:10px; background: #000000; ">
-                <img src="https://image.flaticon.com/icons/svg/119/119058.svg" class="img-fluid" alt="Responsive image">
-            </a>
-            
         </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="margin:10px; background: #000000; ">
-                <img src="https://image.flaticon.com/icons/svg/119/119058.svg" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="margin:10px; background: #000000; ">
-                <img src="https://image.flaticon.com/icons/svg/119/119058.svg" class="img-fluid" alt="Responsive image">
-            </div>
-            
-        </div>
+        <div class="row">
+            <a class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin-right: 10px; ">
+                Doctors
+            </a>
+            <a class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin-left:10px; margin-right:10px; ">
+                Patients
+            </a>
+            <a class="col-sm shadow-lg p-3 mb-5 bg-white rounded" style="border: 0px; margin-left:10px; ">
+                History
+            </a>
+        </div> -->
+    </div>
     </div>
 {% endblock content %}

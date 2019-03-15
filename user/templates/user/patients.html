@@ -1,0 +1,17 @@
+{% extends "user/base.html" %}
+{% block content %}
+{% for patient in patients %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+        <h1 class="mr-2" href="#">{{ patient.name }}</h1>
+        <h5 class="text-muted">DOB: {{ patient.dob }}</h5>
+        <h5 class="text-muted">Gender: {{ patient.gender }}</h5>
+        <h5 class="text-muted">Pin Code: {{ patient.pin_code }}</h5>
+        </div>
+        
+    </div>
+    </article>
+    {% endfor %}
+
+{% endblock content %}
