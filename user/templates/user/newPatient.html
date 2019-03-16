@@ -1,4 +1,151 @@
 {% extends "user/base.html" %}
 {% block content %}
 <h1>New Patient</h1>
+
+<main class="page">
+    <div class="box">
+            <input type="file" id="file-input">
+    </div>
+    <div id="my_camera"></div>
+    <input type=button value="Take Snapshot" onClick="take_snapshot()">
+    <button class="btn save hide1">Crop</button>
+    <div class="box-2">
+        <div  class="result"></div>
+    </div> 
+    <!--rightbox-->
+    <div class="box-2 img-result hide">
+        <!-- result of crop -->
+        <img class="cropped" src="" alt="">
+    </div>
+    <!-- input file -->
+    <div class="box">
+        <div class="options hide">
+            <label> Width</label>
+            <input type="number" class="img-w" value="300" min="100" max="1200" />
+    </div>
+        <!-- save btn -->
+      
+        
+    </div>
+
+<!-- <img id="results"  src = ""></img> -->
+</main>
+{% csrf_token %}
+<script>
+
+
+let result = document.querySelector('.result'),
+img_result = document.querySelector('.img-result'),
+img_w = document.querySelector('.img-w'),
+img_h = document.querySelector('.img-h'),
+options = document.querySelector('.options'),
+save = document.querySelector('.save'),
+cropped = document.querySelector('.cropped'),
+dwn = document.querySelector('.download'),
+upload = document.querySelector('#file-input'),
+cropper = '';
+
+Webcam.set({
+			width: 640,
+			height: 480,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+Webcam.attach( '#my_camera' );
+		
+// <!-- Code to handle taking the snapshot and displaying it locally -->
+function take_snapshot() {	
+	// take snapshot and get image data
+	Webcam.snap( function(data_uri) {
+	// display results in page
+	// document.getElementById('results').innerHTML = 
+	// 	'<img src="'+data_uri+'"/>';
+	// document.getElementById('results').setAttribute("src",data_uri);
+	// console.log(data_uri);
+	// create new image
+	let img = document.createElement('img');
+	img.id = 'image';
+	img.src = data_uri;
+	// clean result before
+	result.innerHTML = '';
+	result.appendChild(img);
+	cropper = new Cropper(img);
+		} );
+	}
+
+// on change show image with crop options
+upload.addEventListener('change', (e) => {
+  if (e.target.files.length) {
+		// start file reader
+    const reader = new FileReader();
+    reader.onload = (e)=> {
+      if(e.target.result){
+				// create new image
+				let img = document.createElement('img');
+				img.id = 'image';
+				img.src = e.target.result
+				// clean result before
+				result.innerHTML = '';
+				// append new image
+				result.appendChild(img);
+				// show save btn and options
+				save.classList.remove('hide');
+				options.classList.remove('hide');
+				// init cropper
+				cropper = new Cropper(img);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  }
+});
+
+
+// save on click
+save.addEventListener('click',(e)=>{
+  e.preventDefault();
+  // get result to data uri
+//   cropper = new Cropper(image);
+  let imgSrc = cropper.getCroppedCanvas({
+		width: img_w.value // input value
+	}).toDataURL();
+  // remove hide class of img
+  cropped.classList.remove('hide');
+	img_result.classList.remove('hide');
+	// show image cropped
+  cropped.src = imgSrc;
+//   dwn.classList.remove('hide');
+//   dwn.download = 'imagename.png';
+//   dwn.setAttribute('href',imgSrc);
+var img = imgSrc.split(',')
+img = img[1];
+  console.log(img);
+  
+//  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+//   token  = token.getAttribute("value");
+//   console.log();
+
+  $.ajax({
+    url: "{%url 'newp'%}",
+    type: "POST", // or "get"
+    // enctype: 'multipart/form-data',
+    // processData: false,
+    // contentType: false,
+    // data: img,
+    data:{
+        image:img,
+        csrfmiddlewaretoken:jQuery("[name=csrfmiddlewaretoken]").val()
+      },
+    success: function(data) {
+        console.log(data.result);
+      alert(data.result);
+    }});
+
+
+
+});
+
+
+</script>    
+
+    
 {% endblock content %}
