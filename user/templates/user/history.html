@@ -5,10 +5,16 @@
     <div class="media-body">
         <div class="article-metadata">
         <h1 class="mr-2" href="#">{{ detail.doctor }}</h1>
+        <h4>Recent Perscriptions:</h4>
         {% for hist in detail.history.all %}
             <h5>{{hist.medicine}}</h5>
         {% endfor %}
+        <h4>Recent Recommendations:</h4>
+        {% for hist in detail.history.all %}
+            <h5>{{hist.recommendation}}</h5>
+        {% endfor %}
         </div>
+
         
     </div>
     </article>
