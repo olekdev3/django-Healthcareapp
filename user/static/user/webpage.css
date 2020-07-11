@@ -1,6 +1,6 @@
 #my_camera{
-    width: 680px;
-    height: 420px;
+    width: 128px;
+    height: 128px;
     border: 1px solid black;
 }
 .page{
@@ -10,7 +10,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     height: 100%;
-    background:black;
+   
 }
 
 .box {
@@ -45,6 +45,6 @@
 }
 
 img {
-    background:black;
+    
     max-width: 100%;
 }

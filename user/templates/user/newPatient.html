@@ -49,7 +49,7 @@ Webcam.set({
 			width: 640,
 			height: 480,
 			image_format: 'jpeg',
-			jpeg_quality: 90
+			jpeg_quality: 190
 		});
 Webcam.attach( '#my_camera' );
 		
@@ -116,23 +116,17 @@ save.addEventListener('click',(e)=>{
 //   dwn.classList.remove('hide');
 //   dwn.download = 'imagename.png';
 //   dwn.setAttribute('href',imgSrc);
-var img = imgSrc.split(',')
-img = img[1];
-  console.log(img);
-  
-//  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-//   token  = token.getAttribute("value");
-//   console.log();
+
+  imgSrc = imgSrc.split(',');
+  imgSrc = imgSrc[1];
+  console.log(imgSrc);
 
   $.ajax({
     url: "{%url 'newp'%}",
     type: "POST", // or "get"
-    // enctype: 'multipart/form-data',
-    // processData: false,
-    // contentType: false,
     // data: img,
     data:{
-        image:img,
+        image:imgSrc,   
         csrfmiddlewaretoken:jQuery("[name=csrfmiddlewaretoken]").val()
       },
     success: function(data) {
