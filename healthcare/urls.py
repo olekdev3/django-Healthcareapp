@@ -23,19 +23,7 @@ from user import views as user_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('menu/', user_views.dashboard, name='dashboard'),
-    path('about/',user_views.about, name='about'),
-    path('profile/',user_views.profile, name='profile'),
-    path('newpatient/', user_views.newPatient, name='newp'),
-    #path('', include('user.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('doctors/', user_views.DoctorsList.as_view(),name='doctors'),
-    path('patients/', user_views.PatientList.as_view(),name='patients'),
-    path('history/', user_views.HistoryList.as_view(),name='history'),
-    path('report/', user_views.report,name='report'),
-    #path('decoder/', user_views.decoder,name='decoder'),
-    path('login/',auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
-    path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
+    path('', include('user.urls')),
+
 
 ]

@@ -119,6 +119,7 @@ save.addEventListener('click',(e)=>{
 
   imgSrc = imgSrc.split(',');
   imgSrc = imgSrc[1];
+  console.log("------------------------");
   console.log(imgSrc);
 
   $.ajax({
@@ -130,6 +131,7 @@ save.addEventListener('click',(e)=>{
         csrfmiddlewaretoken:jQuery("[name=csrfmiddlewaretoken]").val()
       },
     success: function(data) {
+      console.log("------------------------");
         console.log(data.result);
       alert(data.result);
     }});

@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from user.models import Patient, Details
+from django.contrib import messages
 
 import json
 import cv2
@@ -36,6 +37,23 @@ def data_uri_to_cv2_img(uri):
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     print(img)
     return img
+
+class addPatient(CreateView):
+    model=Patient
+    fields=['name','uid','gender','dob','house','street','landmark','postoffice','district','state','pin_code']
+
+    def form_valid(self, form):
+        messages.success(self.request,'Patient Added Successfully')
+        return super().form_valid(form)
+
+class addCase(CreateView):
+    model=Details
+    fields=['aadhar','doctor','diagnosis','recommendation','medicine','test']
+
+    def form_valid(self, form):
+        messages.success(self.request,'Case Added Successfully')
+        return super().form_valid(form)
+
 
 def newPatient(request):
     if request.method =="POST":

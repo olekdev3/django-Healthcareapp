@@ -4,8 +4,12 @@
 <div class="content-section">
        <div class="media">
          <div class="media-body">
-           <h2 class="account-heading">{{ user.username }}</h2>
-           <p class="text-secondary">{{ user.email }}</p>
+           <h1 class="account-heading">{{ user.username }}</h1>
+           <p class="text-secondary">Email: {{ user.email }}</p>
+           <p class="text-secondary">Role: {{ user.profile.role }}</p>
+           <p class="text-secondary">DOB: {{ user.profile.dob }}</p>
+           <p class="text-secondary">Bloog Group:{{ user.profile.bloodGroup }}</p>
+           
          </div>
        </div>
      </div>
